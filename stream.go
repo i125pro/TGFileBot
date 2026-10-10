@@ -207,7 +207,8 @@ func (stream *Stream) download(numTask int, contentStart, contentEnd int64) {
 
 			// 获取该协程专属的连接池（nil 时 DownloadChunk 自动回退为临时 pool）
 			pool := stream.handlePool(numTask, src)
-			content, fileName, err := stream.Client.DownloadChunk(src, int(task.ContentStart), int(task.ContentEnd)+1, int(chunkSize), false, stream.Ctx, timeout, pool)
+			// 新版 gogram 将尾块长度按 1KB 对齐，必须启用 precise，避免 LIMIT_INVALID。
+			content, fileName, err := stream.Client.DownloadChunk(src, int(task.ContentStart), int(task.ContentEnd)+1, int(chunkSize), true, stream.Ctx, timeout, pool)
 			if err != nil {
 				errStr := strings.ToLower(err.Error())
 				switch {
