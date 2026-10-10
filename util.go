@@ -23,10 +23,10 @@ var (
 		".ts": true, ".m3u8": true, ".rm": true, ".rmvb": true, ".iso": true,
 	}
 
-	// telegramLinkRe 匹配 t.me 消息链接, 供 handleLink 与 handleMess 复用, 避免每次请求重复编译
-	telegramLinkRe = regexp.MustCompile(`t\.me\/(c\/(\d+)|([a-zA-Z0-9_]+))\/(\d+)(?:.*(?:comment|thread)=(\d+))?`)
-	// sizeDigitSuffixRe 判断缓存大小字符串末尾是否为纯数字（即无单位后缀）
-	sizeDigitSuffixRe = regexp.MustCompile(`\d$`)
+	// teleLinkRe 匹配 t.me 消息链接, 供 handleLink 与 handleMess 复用, 避免每次请求重复编译
+	teleLinkRe = regexp.MustCompile(`t\.me\/(c\/(\d+)|([a-zA-Z0-9_]+))\/(\d+)(?:.*(?:comment|thread)=(\d+))?`)
+	// sizeDitSuffixRe 判断缓存大小字符串末尾是否为纯数字（即无单位后缀）
+	sizeDitSuffixRe = regexp.MustCompile(`\d$`)
 )
 
 // isVideoFile 判断文件后缀是否为视频文件
@@ -90,7 +90,7 @@ func convertSize(str string) (int64, error) {
 	var unit int64 = 1
 	src := strings.ToUpper(str)
 	switch {
-	case strings.HasSuffix(src, "B"), sizeDigitSuffixRe.MatchString(src):
+	case strings.HasSuffix(src, "B"), sizeDitSuffixRe.MatchString(src):
 		src = strings.TrimSuffix(src, "B")
 		unit = 1
 	case strings.HasSuffix(src, "K"):

@@ -103,7 +103,7 @@ type HackLink struct {
 	UID    int64                // 发起请求的用户 ID
 	Pass   string               // 可选密码
 	Hash   string               // 验证哈希
-	Match  []string             // 单条 t.me 链接的正则匹配结果（telegramLinkRe 的一个 submatch）
+	Match  []string             // 单条 t.me 链接的正则匹配结果（teleLinkRe 的一个 submatch）
 }
 
 type HandleMs struct {

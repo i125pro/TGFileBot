@@ -838,7 +838,7 @@ func handleMess(m *telegram.NewMessage) error {
 	}
 
 	// 匹配格式如：t.me/c/12345/678 或 t.me/username/678
-	matches := telegramLinkRe.FindAllStringSubmatch(src, -1)
+	matches := teleLinkRe.FindAllStringSubmatch(src, -1)
 
 	if len(matches) == 0 {
 		return nil

@@ -587,7 +587,7 @@ func handleLink(w http.ResponseWriter, r *http.Request) {
 	res.Offset = params.Offset
 
 	results := make([]Item, 0)
-	for _, match := range telegramLinkRe.FindAllStringSubmatch(src, -1) {
+	for _, match := range teleLinkRe.FindAllStringSubmatch(src, -1) {
 		res.Match = match
 		items, err := hackLinks(res)
 		if err != nil {
