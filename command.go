@@ -1,3 +1,4 @@
+// 本文件由 i125pro 于 2026 年修改: 接入 /fw、/to、/autofw、/forward 命令。
 package main
 
 import (

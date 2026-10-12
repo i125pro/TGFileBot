@@ -1,3 +1,6 @@
+// Copyright 2026 i125pro
+// 基于 lm317379829/TGFileBot 新增, 以 Apache License 2.0 授权发布, 见 LICENSE。
+
 package main
 
 import (

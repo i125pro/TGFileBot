@@ -894,6 +894,8 @@ hash_val = hashlib.md5(f"{uid}{password}".encode()).hexdigest()[:6]
 
 本项目遵循 [Apache 2.0](LICENSE) 许可。
 
+本仓库是 [lm317379829/TGFileBot](https://github.com/lm317379829/TGFileBot) 的修改版，原作者版权保留。修改内容：新增 `forward.go`、`fwui.go`，修改 `client.go`、`command.go`、`README.md`、`README_en.md`（各文件开头有修改说明）。转发功能只参考了其他开源项目的思路，没有复制它们的代码。使用转发功能请遵守 Telegram 服务条款和内容版权，只保存你有权保存的内容。
+
 ---
 
 ## 更新日志

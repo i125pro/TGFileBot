@@ -1,3 +1,4 @@
+// 本文件由 i125pro 于 2026 年修改: 注册 /fw、/autofw、/forward 命令菜单与回调, UserBot 挂载自动转发。
 package main
 
 import (
