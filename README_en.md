@@ -8,6 +8,18 @@ TGFileBot is an open-source project that deeply integrates a TeleBot and a UserB
 
 **⭐ Project Features**: Adopts a production-level concurrent architecture, supports advanced features such as HTTP Range chunk streaming, automatic reference refreshing, and multi-level cache optimization.
 
+
+## Forwarding (added in this fork)
+
+This fork of [lm317379829/TGFileBot](https://github.com/lm317379829/TGFileBot) adds message forwarding (admins only, UserBot must be logged in):
+
+- `/fw [keyword]` – tap a source chat from your chat list, tick messages, tap a target (Saved Messages included). Use `/to keyword` to filter targets.
+- `/autofw` – auto-forward rules: every new message in the source is forwarded to the target. Rules live in `files/forward_rules.json`; chained rules are refused to avoid loops.
+- `/forward <t.me link> [target]` – forward by link.
+- Sources and targets can be channels, groups, private chats or bots. Native forwarding is tried first; if the source restricts forwarding, the media is downloaded and re-uploaded with its caption, formatting and file attributes.
+
+No Docker Hub image is published for this fork; build it from source (see the Chinese README).
+
 ## Core Features
 
 - **🚀 High-performance Streaming**: Based on coroutine concurrent chunk download technology, it supports HTTP Range requests, enabling drag-and-play video streaming in browsers or players.
