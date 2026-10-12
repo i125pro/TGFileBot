@@ -155,7 +155,11 @@ func forwardOne(client *telegram.Client, target any, match []string) (string, er
 	if err != nil {
 		return "", err
 	}
+	return forwardByID(client, target, source, mid)
+}
 
+// forwardByID 转发来源会话中的一条消息(相册会整组转发), 返回实际采用的方式
+func forwardByID(client *telegram.Client, target, source any, mid int32) (string, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), forwardTimeout)
 	defer cancel()
 

@@ -788,6 +788,12 @@ func handleBotCommand(m *telegram.NewMessage) error {
 			return nil
 		case strings.HasPrefix(text, "/forward"):
 			return handleForward(m)
+		case strings.HasPrefix(text, "/autofw"):
+			return handleFwPicker(m, "rules")
+		case text == "/fw" || strings.HasPrefix(text, "/fw "):
+			return handleFwPicker(m, "once")
+		case text == "/to" || strings.HasPrefix(text, "/to "):
+			return handleFwTo(m)
 		default:
 			if !infos.isWhite(m.SenderID()) && m.SenderID() != 0 {
 				sendMS(m, "你没有使用此机器人的权限", nil, 60)

@@ -54,6 +54,7 @@ func (infos *Infos) startBot() (err error) {
 
 	// 注册 Bot 命令处理函数
 	client.On(telegram.OnMessage, handleBotCommand)
+	client.AddCallbackHandler("fw:", handleFwCallback)
 
 	// 启动一个协程并发设置 Bot 的命令列表, 不影响主流程
 	safeGo(func() {
@@ -156,6 +157,14 @@ func (infos *Infos) startBot() (err error) {
 				Description: "设置接口访问密码",
 			},
 			{
+				Command:     "fw",
+				Description: "点选会话和消息转发",
+			},
+			{
+				Command:     "autofw",
+				Description: "自动转发规则",
+			},
+			{
 				Command:     "forward",
 				Description: "转发消息(支持禁止转发的频道)",
 			},
@@ -232,6 +241,8 @@ func (infos *Infos) userBotClient() (err error) {
 		return
 	}
 
+	fwRulesOnce.Do(fwLoadRules)
+	client.On(telegram.OnMessage, handleAutoForward)
 	infos.UserClient.Store(client)
 
 	return err
