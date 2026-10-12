@@ -155,6 +155,10 @@ func (infos *Infos) startBot() (err error) {
 				Command:     "password",
 				Description: "设置接口访问密码",
 			},
+			{
+				Command:     "forward",
+				Description: "转发消息(支持禁止转发的频道)",
+			},
 		}
 		commands = append(commands, commonCommands...)
 

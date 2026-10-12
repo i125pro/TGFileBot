@@ -786,6 +786,8 @@ func handleBotCommand(m *telegram.NewMessage) error {
 			infos.buildRexRules()
 			sendMS(m, successMes, nil, 60)
 			return nil
+		case strings.HasPrefix(text, "/forward"):
+			return handleForward(m)
 		default:
 			if !infos.isWhite(m.SenderID()) && m.SenderID() != 0 {
 				sendMS(m, "你没有使用此机器人的权限", nil, 60)
